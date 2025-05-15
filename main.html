@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinic Management Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #333;
+            color: white;
+            padding-top: 20px;
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 15px;
+            text-align: center;
+            background-color: #444;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .sidebar ul li:hover {
+            background-color: #555;
+        }
+
+        /* Main content area */
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            flex: 1;
+            background-color: #f4f4f4;
+        }
+
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .section-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 15px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding-top: 10px;
+            }
+
+            .sidebar ul li {
+                padding: 10px;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Clinic Dashboard</h2>
+        <ul>
+            <li onclick="showSection('clinic-data')">Clinic's Data</li>
+            <li onclick="showSection('physical-examination')">Physical Examination</li>
+            <li onclick="showSection('clinic-logs')">Clinic Logs</li>
+            <li onclick="showSection('nurses-notes')">Nurse's Notes</li>
+        </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <div id="clinic-data" class="section-content" style="display: none;">
+            <h2 class="section-title">Clinic's Data</h2>
+            <p>Here, you will find all relevant data about the clinic, patients, appointments, etc.</p>
+        </div>
+
+        <div id="physical-examination" class="section-content" style="display: none;">
+            <h2 class="section-title">Physical Examination</h2>
+            <p>Details related to the patient's physical examination will be shown here.</p>
+        </div>
+
+        <div id="clinic-logs" class="section-content" style="display: none;">
+            <h2 class="section-title">Clinic Logs</h2>
+            <p>This section contains all the logs related to clinic operations and activities.</p>
+        </div>
+
+        <div id="nurses-notes" class="section-content" style="display: none;">
+            <h2 class="section-title">Nurse's Notes</h2>
+            <p>All notes and updates from the nurses are displayed here.</p>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section-content');
+            sections.forEach(function(section) {
+                section.style.display = 'none';
+            });
+
+            // Show the selected section
+            const selectedSection = document.getElementById(sectionId);
+            selectedSection.style.display = 'block';
+        }
+
+        // Default to showing "Clinic's Data"
+        showSection('clinic-data');
+    </script>
+</body>
+</html>
